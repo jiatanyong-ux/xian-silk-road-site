@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xi'an Food Culture</title>
+  <meta name="description" content="A feature page about Xi'an food culture, signature dishes, and the districts where visitors experience local flavor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coal: #121212;
+      --cream: #f6f0e8;
+      --spice: #b64021;
+      --amber: #e1a646;
+      --olive: #5d6844;
+      --smoke: #ece2d2;
+      --line: rgba(18,18,18,0.12);
+      --shadow: 0 18px 42px rgba(18,18,18,0.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans", sans-serif;
+      color: var(--coal);
+      background:
+        radial-gradient(circle at 85% 16%, rgba(225,166,70,.26), transparent 22%),
+        radial-gradient(circle at 10% 0%, rgba(182,64,33,.18), transparent 26%),
+        linear-gradient(180deg, #f8f3ec 0%, #efe3d1 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(calc(100% - 32px), 1220px); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; flex-wrap: wrap; }
+    .nav .title { font-family: "Bebas Neue", sans-serif; letter-spacing: .08em; font-size: 2rem; }
+    .nav-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .nav-links a { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.45); }
+    .hero { display: grid; grid-template-columns: 1.08fr .92fr; gap: 24px; align-items: stretch; padding: 18px 0 34px; }
+    .headline { padding: 20px 0 10px; }
+    .kicker { display: inline-block; font-size: .92rem; text-transform: uppercase; letter-spacing: .16em; color: var(--spice); margin-bottom: 18px; }
+    h1 { margin: 0; font-family: "Bebas Neue", sans-serif; font-size: clamp(4rem, 11vw, 8rem); line-height: .9; letter-spacing: .03em; }
+    .headline p { margin: 18px 0 0; line-height: 1.95; max-width: 42rem; font-size: 1.02rem; }
+    .hero-card { border-radius: 30px; overflow: hidden; min-height: 430px; position: relative; box-shadow: var(--shadow); }
+    .hero-card img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 26%, rgba(0,0,0,.72) 100%); }
+    .hero-card .caption { position: absolute; left: 22px; right: 22px; bottom: 20px; z-index: 1; color: white; }
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .chips span { padding: 8px 12px; border-radius: 999px; background: rgba(93,104,68,.12); color: #39452a; border: 1px solid rgba(93,104,68,.18); font-size: .92rem; }
+    section { padding: 30px 0; }
+    .section-title { display: grid; grid-template-columns: .74fr 1.26fr; gap: 18px; align-items: start; margin-bottom: 18px; }
+    .section-title h2 { margin: 0; font-family: "Bebas Neue", sans-serif; letter-spacing: .04em; font-size: clamp(2.4rem, 6vw, 4rem); line-height: .95; }
+    .section-title p { margin: 0; line-height: 1.9; color: rgba(18,18,18,.78); }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .dish { background: rgba(255,255,255,.62); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .dish img { width: 100%; height: 230px; object-fit: cover; }
+    .dish .body { padding: 18px; }
+    .dish h3 { margin: 0 0 8px; font-size: 1.18rem; }
+    .dish p { margin: 0; line-height: 1.8; color: rgba(18,18,18,.78); font-size: .96rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .box { padding: 24px; border-radius: 26px; background: rgba(255,255,255,.56); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .box strong { color: var(--spice); }
+    .box p, .box li { line-height: 1.9; }
+    .box ul { margin: 12px 0 0; padding-left: 18px; }
+    .route { background: linear-gradient(135deg, #1a1a1a 0%, #32261b 100%); color: #f8f3ec; }
+    .route .step { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .route .step:last-child { border-bottom: none; }
+    .scene-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .scene-card { border-radius: 26px; overflow: hidden; position: relative; min-height: 280px; box-shadow: var(--shadow); }
+    .scene-card img { width: 100%; height: 100%; object-fit: cover; }
+    .scene-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72)); }
+    .scene-card .overlay { position: absolute; left: 18px; right: 18px; bottom: 18px; color: white; z-index: 1; }
+    .back { display: inline-flex; margin-top: 10px; padding: 12px 16px; border-radius: 999px; background: var(--coal); color: white; }
+    footer { padding: 30px 0 50px; color: rgba(18,18,18,.68); }
+    @media (max-width: 1024px) { .hero, .section-title, .two-col, .scene-grid { grid-template-columns: 1fr; } .menu-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .hero-card, .scene-card { min-height: 300px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="title" href="food.html">XI'AN FOOD</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#dishes">Signature Dishes</a>
+        <a href="#districts">Food Districts</a>
+        <a href="#route">Food Route</a>
+        <a href="history.html">History</a>
+        <a href="night.html">Night View</a>
+        <a href="route.html">Route</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="headline">
+          <span class="kicker">Feature Page · Local Flavor</span>
+          <h1>Taste Xi'an</h1>
+          <p>
+            This page presents food as a cultural lens for understanding Xi'an. Local cuisine is known for wheat-based staples, rich meat flavours, strong seasoning, and a direct street-food character, which together reveal the city’s daily rhythm and regional identity.
+          </p>
+          <div class="chips">
+            <span>Roujiamo</span>
+            <span>Yangrou Paomo</span>
+            <span>Biangbiang Noodles</span>
+            <span>Street Food Culture</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/images/roujiamo-real.jpg" alt="Xi'an food street scene" />
+          <div class="caption">
+            <strong>Xi'an food culture is strongest when dish and place come together.</strong>
+            <div>Markets, old streets, and busy evening areas make the food experience feel local and memorable.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dishes">
+        <div class="section-title">
+          <h2>Three dishes that really represent Xi'an</h2>
+          <p>
+            The dishes in this section were selected because they are strongly associated with Xi'an and can be explained through clear visual and cultural evidence. This makes the page more specific, more credible, and more suitable for formal coursework presentation.
+          </p>
+        </div>
+        <div class="menu-grid">
+          <article class="dish">
+            <img src="assets/images/roujiamo-real.jpg" alt="Roujiamo in Xi'an" />
+            <div class="body">
+              <h3>Roujiamo</h3>
+              <p>Roujiamo is one of the best-known foods associated with Xi'an and Shaanxi. The crisp bread and slow-cooked meat make it practical, filling, and strongly linked to local street-food culture.</p>
+            </div>
+          </article>
+          <article class="dish">
+            <img src="assets/images/yangrou-paomo-real.jpg" alt="Yangrou paomo" />
+            <div class="body">
+              <h3>Yangrou Paomo</h3>
+              <p>Yangrou paomo is one of Xi'an’s most iconic traditional dishes. Bread pieces are soaked in lamb soup, creating a meal that feels heavy, warming, and deeply tied to local food identity.</p>
+            </div>
+          </article>
+          <article class="dish">
+            <img src="assets/images/biangbiang-real.jpg" alt="Biangbiang noodles" />
+            <div class="body">
+              <h3>Biangbiang Noodles</h3>
+              <p>These thick hand-pulled noodles represent the bold and straightforward flavor style of Shaanxi cuisine. They also add a strong regional identity that many visitors remember immediately.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="districts">
+        <div class="section-title">
+          <h2>Where food culture is experienced</h2>
+          <p>
+            A food page should not only name dishes. It should also explain where visitors feel the food culture of the city, because in Xi'an atmosphere matters as much as the meal itself.
+          </p>
+        </div>
+        <div class="scene-grid">
+          <article class="scene-card">
+            <img src="assets/images/roujiamo-real.jpg" alt="Xi'an roujiamo street stall" />
+            <div class="overlay"><h3>Street Stall Culture</h3><p>Small food stalls are important because they show Xi'an cuisine as part of daily life, not only restaurant culture.</p></div>
+          </article>
+          <article class="scene-card">
+            <img src="assets/images/yangrou-paomo-real.jpg" alt="Yangrou paomo dining scene" />
+            <div class="overlay"><h3>Traditional Dining</h3><p>Dishes such as yangrou paomo show the slower, heavier, and more traditional side of Xi'an food culture.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="two-col">
+          <article class="box">
+            <h2>Why food deserves its own page</h2>
+            <p>
+              The homepage introduces Xi'an through history and landmarks, while this page adds a different layer through taste, local routine, and daily culture. As a result, the website feels more complete and more carefully structured.
+            </p>
+            <ul>
+              <li><strong>Cultural value:</strong> food shows everyday life rather than only monument-based tourism.</li>
+              <li><strong>Tourism value:</strong> visitors often remember Xi'an through meals as much as through landmarks.</li>
+              <li><strong>Coursework value:</strong> the page adds meaningful depth and reduces repetition across the site.</li>
+            </ul>
+          </article>
+          <article class="box route" id="route">
+            <h2>Half-Day Food Route</h2>
+            <div class="step"><strong>Stop 1</strong><p>Begin with roujiamo for a quick and iconic first taste of local street food.</p></div>
+            <div class="step"><strong>Stop 2</strong><p>Move to yangrou paomo for a heavier and more traditional meal with stronger regional character.</p></div>
+            <div class="step"><strong>Stop 3</strong><p>Add biangbiang noodles to experience the texture and bold seasoning style associated with Shaanxi cuisine.</p></div>
+            <div class="step"><strong>Stop 4</strong><p>End in a busy evening food area where dishes and city atmosphere come together.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>Why this page strengthens the website</h2>
+          <p>
+            This page contributes a distinct perspective to the full project by connecting cuisine, place, and visitor experience through a more focused structure.
+          </p>
+        </div>
+        <div class="box">
+          <p>
+            Instead of repeating general information from the homepage, this food page focuses on signature dishes, dining scenes, and visitor experience. That gives the full website greater thematic depth and a more polished academic presentation.
+          </p>
+          <a class="back" href="index.html">Back to the Xi'an homepage</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Xi'an Promotion Website · Food Feature Page
+    </footer>
+  </div>
+</body>
+</html>
